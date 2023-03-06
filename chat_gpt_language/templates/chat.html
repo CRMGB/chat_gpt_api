@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block content %}
+{% load static %}
+<section class="section mt-5 d-flex align-items-center justify-content-center" style="height:100vh;">
+<div class="container">
+<form>
+    <div method="POST" class="form-group">
+      <label for="exampleInputQuestion">Input your question</label>
+      <input name="question" type="text" required="True" class="form-control" id="exampleInputQuestion" aria-describedby="GPTHelp" placeholder="Enter question...">
+      <small id="QuestionHelp" class="form-text text-muted">We'll never share your Question with anyone else.</small>
+    </div>
+    <button class="btn btn-primary" value="Submit" type="submit" onclick="showLoaderOnClick()">
+        <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload
+    </button>
+  </form>
+  <label for="Output">Chat GPT's answer:</label>
+  <p>{{response |safe}}</p>
+</div>
+</section>
+{% load static %}
+{% endblock %}
