@@ -1,8 +1,8 @@
 
 from django.urls import path
-from .views import QuestionView
+from .views import GPT3View
 from . import views
 
 urlpatterns=[
-  path('',views.QuestionView.as_view(), name="csv_upload"),
+  path('',views.GPT3View.as_view(), name="chat"),
 ]
