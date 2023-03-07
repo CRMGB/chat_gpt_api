@@ -138,3 +138,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 API_GPT_KEY_SETTINGS = os.environ.get('API_GPT_KEY')
+
+DATETIME_FORMAT="%Y-%m-%d%H:%M:%S"
+
+USE_TZ=False
