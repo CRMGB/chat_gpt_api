@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 #Django model utils TimeStampedModel
@@ -10,6 +11,12 @@ class TimestampedModel(models.Model):
         abstract = True
 
 class QuestionModel(TimestampedModel):
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        help_text="User owning this question",
+        null=True
+    )    
     question = models.TextField()
 
     def __str__(self):
