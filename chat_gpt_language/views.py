@@ -15,7 +15,10 @@ RedirectOrResponse = typing.Union[HttpResponseRedirect, HttpResponse]
  
 class GPT3View(View):
     def get(self, request: HttpRequest, *args: Any, **kwargs: Any)-> HttpResponse:
-        return render(request, "chat.html")
+        context={
+            "questions":QuestionModel.objects.filter(user__id=self.request.user.id).order_by('-created')[:5], 
+        }        
+        return render(request, "chat.html", context)
         
     def post(self, request: HttpRequest, *args: Any, **kwargs: Any)-> RedirectOrResponse:
         """Post method entry point to get the user's input, save it, save chatGPT response
@@ -26,22 +29,23 @@ class GPT3View(View):
             if form.is_valid():
                 try:
                     resp_chat_gpt = contract_chat_gpt(question_input)
-                    instance = form.save()
-                    question_entry = QuestionModel.objects.get(id=instance.id)
+                    thought = form.save(commit=False)
+                    thought.user = request.user
+                    thought.save()
                     answer = AnswerModel.objects.create(
-                        question_fk=question_entry, 
+                        question_fk=QuestionModel.objects.last(), 
                         answer=resp_chat_gpt
                     )
                     context={
-                        "questions":QuestionModel.objects.filter().order_by('-created')[:5], 
+                        "questions":QuestionModel.objects.filter(user__id=self.request.user.id).order_by('-created')[:5], 
                         "response": answer
                     }             
                     return render(request, "chat.html", context)
                 except:
-                    messages.error(request, f"An error happened: '{resp_chat_gpt}'.")
+                    messages.error(request, f"An error happened 1: '{resp_chat_gpt}'.")
                 return redirect("chat")
             else:
-                messages.error(request, f"An error happened: '{form.errors}'.")
+                messages.error(request, f"An error happened 2: '{form.errors}'.")
             return redirect("chat")
 
 

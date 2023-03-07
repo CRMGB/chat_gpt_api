@@ -29,8 +29,9 @@ SECRET_KEY = 'django-insecure-q@g_rq2s8k2d_udjvo)uh-hb6#evy@1-27*(*%_hoxalnhn769
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', "localhost", '.herokuapp.com']
 
+LOGOUT_REDIRECT_URL = '/login'
 
 # Application definition
 
@@ -41,8 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'userManagement',
     'chat_gpt_language',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 STATIC_ROOT = os.path.join(BASE_DIR,"/static/")
 
