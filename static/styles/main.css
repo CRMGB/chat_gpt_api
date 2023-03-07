@@ -121,6 +121,9 @@
   height: 90vh !important;
 }
 
+.history {
+  padding: 45px;
+}
 /* Loader */
 
 .preload {

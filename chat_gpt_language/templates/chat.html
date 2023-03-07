@@ -9,7 +9,7 @@
         <form method="POST">
           {% csrf_token %}
           <div class="form-group">
-            <label for="exampleInputQuestion">Input your question</label>
+            <label for="exampleInputQuestion"><h4>Input your question</h3></label>
             <input name="question" type="text" required="True" class="form-control" id="exampleInputQuestion"
               aria-describedby="GPTHelp" placeholder="Enter question...">
             <small id="QuestionHelp" class="form-text text-muted">We'll never share your Question with anyone
@@ -21,11 +21,11 @@
             </button>
           </div>
         </form>
-        <label for="Output">Chat GPT's answer:</label>
-        <p>{{response.answer |safe}}</p>        
+        <label for="Output"><h3>Chat GPT's answer:</h3></label>
+        <p style="background-color: #d2f4d3">{{response.answer |safe}}</p>        
       </div>
-      <div class="col-md-6 col-sm-6 col-md-offset-6">
-        <h3>Latests Questions:</h3>
+      <div class="history col-md-6 col-sm-6 col-md-offset-6">
+        <h3>Latest Questions:</h3>
         {% if questions %}
         {% for question in questions %}
         <div class="col-md-4 col-sm-4 col-md-offset-4">
