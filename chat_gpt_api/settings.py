@@ -35,7 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', "localhost", '.herokuapp.com']
 
@@ -76,6 +76,8 @@ MIDDLEWARE = [
 WHITENOISE_USE_FINDERS = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 ROOT_URLCONF = 'chat_gpt_api.urls'
 
@@ -142,12 +144,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -164,3 +160,5 @@ API_GPT_KEY_SETTINGS = os.environ.get('API_GPT_KEY')
 DATETIME_FORMAT="%Y-%m-%d%H:%M:%S"
 
 USE_TZ=False
+
+django_heroku.settings(locals())
