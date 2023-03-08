@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn chat-gpt-api-django.wsgi
+web: gunicorn chat_gpt_api.wsgi
