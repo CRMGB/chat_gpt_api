@@ -16,6 +16,9 @@
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
         <p class="logintext">{{request.user.username}}</p>
+        <li class="nav-item loginOut">
+          <a href="{% url 'logout' %}">Log Out</a>
+        </li>
         {% else %}
         <p class="logintext">You are not logged in</p>
         <li class="nav-item loginOut">
