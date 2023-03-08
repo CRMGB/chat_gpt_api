@@ -31,8 +31,6 @@ Failed to connect to ChatGPT, RateLimitError: <error>
 ```
     
 ## Improvements:
-- Make environments to run locally.
-- More design styling and functionality. 
 - Some unittest will be great!
 - Pagination showing the last 5 answers/questions and be able to click them.
-- A login and logout (user management)
+- Use Natural Language Processing (NLP) techniques to improve the relevance and accuracy of the responses.
